@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -47,28 +48,38 @@ fun ProfileScreen(navigateTo: NavigationFun, profileViewModel: ProfileViewModel 
     val user by profileViewModel.getUser().collectAsState()
     val scrollState = rememberScrollState()
     Column(
-        Modifier.background(Color.Black).fillMaxSize().verticalScroll(scrollState)
+        Modifier
+            .background(Color.Black)
+            .fillMaxSize()
+            .verticalScroll(scrollState)
             .padding(vertical = 6.dp, horizontal = 20.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Spacer(modifier = Modifier.weight(1f))
-        Box(Modifier.fillMaxWidth(.35f).aspectRatio(1f)) {
+        Box(
+            Modifier
+                .fillMaxWidth(.35f)
+                .aspectRatio(1f)) {
             Image(
                 painterResource(profileViewModel.getAvatar(user.data).drawable), null,
-                Modifier.fillMaxSize().align(Alignment.Center),
+                Modifier
+                    .fillMaxSize()
+                    .align(Alignment.Center),
             )
-
             Row(
-                Modifier.background(
-                    Color(0xFF74FF79), shape = CircleShape
-                ).padding(6.dp, 8.dp, 16.dp, 8.dp).align(Alignment.BottomCenter), verticalAlignment = Alignment.CenterVertically
+                Modifier
+                    .background(
+                        Color(0xFF74FF79), shape = CircleShape
+                    )
+                    .padding(12.dp, 8.dp, 16.dp, 8.dp)
+                    .align(Alignment.BottomCenter), verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
                     painterResource(R.drawable.crown),
                     null,
-                    Modifier
                 )
+                Spacer(modifier = Modifier.width(4.dp))
                 TitleSmallText(text = "280xp", color = Color.Black)
             }
         }
@@ -78,11 +89,13 @@ fun ProfileScreen(navigateTo: NavigationFun, profileViewModel: ProfileViewModel 
             Modifier.fillMaxWidth(.8f),
             TextAlign.Center,
             Color.White,
-
             )
-        Row(Modifier.padding(top = 8.dp).clickable {
-                navigateTo(Destinations.Rating)
-            }) {
+        Row(
+            Modifier
+                .padding(top = 8.dp)
+                .clickable {
+                    navigateTo(Destinations.Rating)
+                }) {
             TitleMediumText(
                 "Звание:", Modifier.fillMaxWidth(.2f), TextAlign.Center, Color.White
             )
@@ -92,13 +105,20 @@ fun ProfileScreen(navigateTo: NavigationFun, profileViewModel: ProfileViewModel 
             Image(
                 painterResource(R.drawable.chevron_right),
                 null,
-                Modifier.fillMaxSize(.1f).padding(top = 2.dp)
+                Modifier
+                    .fillMaxSize(.1f)
+                    .padding(top = 2.dp)
             )
         }
         Spacer(modifier = Modifier.weight(1.0f))
         Row(
-            Modifier.clip(RoundedCornerShape(12.dp)).background(color = Color(0xFF232323))
-                .fillMaxSize().fillMaxWidth().padding(12.dp, 8.dp).clickable {
+            Modifier
+                .clip(RoundedCornerShape(12.dp))
+                .background(color = Color(0xFF232323))
+                .fillMaxSize()
+                .fillMaxWidth()
+                .padding(12.dp, 8.dp)
+                .clickable {
                     navigateTo(Destinations.ListFriends)
                 }, verticalAlignment = Alignment.CenterVertically
         ) {
@@ -107,8 +127,10 @@ fun ProfileScreen(navigateTo: NavigationFun, profileViewModel: ProfileViewModel 
                     Icons.Default.Groups,
                     null,
                     tint = Color.White,
-                    modifier = Modifier.clip(RoundedCornerShape(24.dp))
-                        .background(Color(0x13FFFFFF)).padding(all = 10.dp)
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(24.dp))
+                        .background(Color(0x13FFFFFF))
+                        .padding(all = 10.dp)
                 )
             }
             TitleMediumText(text = "Друзья", Modifier.padding(start = 12.dp))
@@ -119,8 +141,13 @@ fun ProfileScreen(navigateTo: NavigationFun, profileViewModel: ProfileViewModel 
         }
         Spacer(Modifier.height(12.dp))
         Row(
-            Modifier.clip(RoundedCornerShape(12.dp)).background(color = Color(0xFF232323))
-                .fillMaxSize().fillMaxWidth().padding(12.dp, 8.dp).clickable {
+            Modifier
+                .clip(RoundedCornerShape(12.dp))
+                .background(color = Color(0xFF232323))
+                .fillMaxSize()
+                .fillMaxWidth()
+                .padding(12.dp, 8.dp)
+                .clickable {
                     navigateTo(Destinations.Achievement)
                 }, verticalAlignment = Alignment.CenterVertically
         ) {
@@ -129,8 +156,10 @@ fun ProfileScreen(navigateTo: NavigationFun, profileViewModel: ProfileViewModel 
                     Icons.Default.EmojiEvents,
                     null,
                     tint = Color.White,
-                    modifier = Modifier.clip(RoundedCornerShape(24.dp))
-                        .background(Color(0x13FFFFFF)).padding(all = 10.dp)
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(24.dp))
+                        .background(Color(0x13FFFFFF))
+                        .padding(all = 10.dp)
                 )
             }
             TitleMediumText(text = "Мои достижения", Modifier.padding(start = 12.dp))
@@ -141,8 +170,13 @@ fun ProfileScreen(navigateTo: NavigationFun, profileViewModel: ProfileViewModel 
         }
         Spacer(Modifier.height(12.dp))
         Row(
-            Modifier.clip(RoundedCornerShape(12.dp)).background(color = Color(0xFF232323))
-                .fillMaxSize().fillMaxWidth().padding(12.dp, 8.dp).clickable {
+            Modifier
+                .clip(RoundedCornerShape(12.dp))
+                .background(color = Color(0xFF232323))
+                .fillMaxSize()
+                .fillMaxWidth()
+                .padding(12.dp, 8.dp)
+                .clickable {
 
                 }, verticalAlignment = Alignment.CenterVertically
         ) {
@@ -151,8 +185,10 @@ fun ProfileScreen(navigateTo: NavigationFun, profileViewModel: ProfileViewModel 
                     Icons.AutoMirrored.Filled.Assignment,
                     null,
                     tint = Color.White,
-                    modifier = Modifier.clip(RoundedCornerShape(24.dp))
-                        .background(Color(0x13FFFFFF)).padding(all = 10.dp)
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(24.dp))
+                        .background(Color(0x13FFFFFF))
+                        .padding(all = 10.dp)
                 )
             }
             TitleMediumText(text = "Мои мероприятия", Modifier.padding(start = 12.dp))

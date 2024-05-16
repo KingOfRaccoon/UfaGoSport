@@ -10,7 +10,7 @@ enum class Destinations(val title: String = "") {
     NewsFriends("Лента новостей"),
     Profile("Профиль"),
     ListFriends("Список друзей"),
-    Rating,
-    Achievement,
-    Event
+    Rating("Рейтинг"),
+    Achievement("Достижения"),
+    Event("Точка интереса")
 }
