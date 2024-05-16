@@ -23,5 +23,9 @@ data class Playground(
     val preview: String,
     val trainings: Int,
     val type_id: Int,
-    val users_train_here: List<UsersTrainHere>
+    val users_train_here: List<UsersTrainHere>,
+    var city: City? = null,
+    var country: Country? = null,
+    var classPlayground: ClassPlayground? = null,
+    var typePlayground: TypePlayground? = null
 )

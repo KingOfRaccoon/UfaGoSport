@@ -3,7 +3,7 @@ package ru.skittens.domain.entity
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class LoginResponse(
-    val username: String,
-    val password: String
+data class TypePlayground(
+    val id: String,
+    val name: String
 )
