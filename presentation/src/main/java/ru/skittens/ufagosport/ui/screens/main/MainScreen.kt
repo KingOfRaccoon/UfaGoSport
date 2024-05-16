@@ -33,6 +33,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import ru.skittens.ufagosport.ui.elements.DisplayLargeText
 import ru.skittens.ufagosport.ui.elements.HeadlineLargeText
+import ru.skittens.ufagosport.ui.elements.TitleLogo
 import ru.skittens.ufagosport.ui.elements.TitleMediumText
 import ru.skittens.ufagosport.ui.navigation.Destinations
 import ru.skittens.ufagosport.ui.navigation.NavigationFun
@@ -78,7 +79,7 @@ fun MainScreen() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainTopBar(title: String) {
-    TopAppBar({ TitleMediumText(title) },
+    TopAppBar({ TitleLogo(title) },
         colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Color(0xFF000000)))
 }
 

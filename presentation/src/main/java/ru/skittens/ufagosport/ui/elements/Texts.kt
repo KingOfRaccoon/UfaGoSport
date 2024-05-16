@@ -1,5 +1,6 @@
 package ru.skittens.ufagosport.ui.elements
 
+import android.graphics.fonts.FontStyle
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.LocalTextStyle
@@ -186,19 +187,34 @@ fun TitleLargeText(
     text: String,
     modifier: Modifier = Modifier,
     textAlign: TextAlign = TextAlign.Start,
-    color: Color = MaterialTheme.colorScheme.onBackground
+    color: Color = MaterialTheme.colorScheme.onBackground,
 ) {
     AutoSizedText(
         modifier,
         text,
         style = MaterialTheme.typography.titleLarge,
         textAlign = textAlign,
-        color = color
+        color = color,
     )
 }
 
 @Composable
 fun TitleMediumText(
+    text: String,
+    modifier: Modifier = Modifier,
+    textAlign: TextAlign = TextAlign.Start,
+    color: Color = MaterialTheme.colorScheme.onBackground
+) {
+    AutoSizedText(
+        modifier,
+        text,
+        style = MaterialTheme.typography.titleMedium,
+        textAlign = textAlign,
+        color = color
+    )
+}
+@Composable
+fun TitleLogo(
     text: String,
     modifier: Modifier = Modifier,
     textAlign: TextAlign = TextAlign.Start,
