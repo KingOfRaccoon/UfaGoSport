@@ -97,10 +97,12 @@ import ru.skittens.ufagosport.ui.elements.PageIndicator
 import ru.skittens.ufagosport.ui.elements.TitleLargeText
 import ru.skittens.ufagosport.ui.elements.TitleMediumText
 import ru.skittens.ufagosport.ui.elements.TitleSmallText
+import ru.skittens.ufagosport.ui.navigation.Destinations
+import ru.skittens.ufagosport.ui.navigation.NavigationFun
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MapScreen(mapViewModel: MapViewModel = koinInject()) {
+fun MapScreen(navigateTo: NavigationFun, mapViewModel: MapViewModel = koinInject()) {
     val context = LocalContext.current
     val lifecycle = LocalLifecycleOwner.current
     val playgroundState by mapViewModel.selectedPlaygroundFlow.collectAsState()
@@ -151,7 +153,7 @@ fun MapScreen(mapViewModel: MapViewModel = koinInject()) {
             mapView.mapWindow.map.mapObjects.addPlacemark {
                 it.userData = playground
                 it.geometry = Point(playground.latitude.toDouble(), playground.longitude.toDouble())
-                it.setIcon(ImageProvider.fromResource(context, R.drawable.ic_dollar_pin))
+                it.setIcon(ImageProvider.fromResource(context, R.drawable.ic_playground))
             }
         }
     }
@@ -167,7 +169,7 @@ fun MapScreen(mapViewModel: MapViewModel = koinInject()) {
     }
 
     if (playgroundState != null)
-        PlaygroundDialog(sheetState, playgroundState!!, mapViewModel::clearPlayground)
+        PlaygroundDialog(sheetState, playgroundState!!, mapViewModel::clearPlayground, navigateTo)
 
     AndroidView(modifier = Modifier.fillMaxSize(), factory = { mapView })
     Box(Modifier.fillMaxWidth()) {
@@ -181,11 +183,16 @@ fun MapScreen(mapViewModel: MapViewModel = koinInject()) {
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun PlaygroundDialog(sheetState: SheetState, playground: Playground, onDismess: () -> Unit) {
+fun PlaygroundDialog(
+    sheetState: SheetState,
+    playground: Playground,
+    onDismiss: () -> Unit,
+    navigateTo: NavigationFun
+) {
     val context = LocalContext.current
     val carouselPager = rememberPagerState { playground.photos.size }
     ModalBottomSheet(
-        onDismess,
+        onDismiss,
         Modifier.fillMaxWidth(),
         sheetState,
         dragHandle = null,
@@ -203,7 +210,7 @@ fun PlaygroundDialog(sheetState: SheetState, playground: Playground, onDismess: 
                 }
 
                 IconButton(
-                    {},
+                    onDismiss,
                     Modifier.align(Alignment.TopStart).padding(16.dp),
                     colors = IconButtonDefaults.iconButtonColors(Color.White.copy(.30f))
                 ) {
@@ -383,7 +390,7 @@ fun PlaygroundDialog(sheetState: SheetState, playground: Playground, onDismess: 
 
                 item {
                     Card(
-                        {},
+                        { navigateTo(Destinations.Event) },
                         Modifier.fillMaxWidth().padding(top = 12.dp),
                         shape = RoundedCornerShape(12.dp),
                         colors = CardDefaults.cardColors(Color(0xFF74FF79))

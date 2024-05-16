@@ -61,7 +61,7 @@ class AuthenticationViewModel(private val userUseCase: UserUseCase, getAvatar: (
 
     fun registrationUser() {
         viewModelScope.launch {
-            val loginResponse = RegistrationResponse(loginFlow.value, passwordFlow.value, userImageFlow.value.name, "1", nameFlow.value)
+            val loginResponse = RegistrationResponse(nameFlow.value, passwordFlow.value, userImageFlow.value.name, "1", loginFlow.value)
 
             userUseCase.registrationUser(loginResponse)
         }
