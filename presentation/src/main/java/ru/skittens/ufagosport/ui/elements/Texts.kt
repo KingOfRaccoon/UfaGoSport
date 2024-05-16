@@ -1,5 +1,7 @@
 package ru.skittens.ufagosport.ui.elements
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -11,12 +13,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
+import ru.skittens.ufagosport.R
 
 @Composable
 fun AutoSizedText(
@@ -207,6 +211,7 @@ fun TitleMediumText(
         textAlign = textAlign,
         color = color
     )
+    Image(painterResource(R.drawable.top_logo), null, Modifier.fillMaxSize(0.4f))
 }
 
 @Composable

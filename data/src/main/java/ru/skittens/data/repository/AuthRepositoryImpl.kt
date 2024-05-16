@@ -6,7 +6,7 @@ import ru.skittens.domain.repository.AuthRepository
 class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository {
 
     override fun registrationUser() {
-        re
+
     }
 
     override fun authUser() {

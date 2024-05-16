@@ -17,16 +17,16 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80,
-    background = Color.Black
+    primary = MainBlack,
+    secondary = MainGreen,
+    tertiary = MainBlack,
+    background = MainBlack
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = MainBlack,
+    secondary = MainBlack,
+    tertiary = MainBlack
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -60,8 +60,9 @@ fun UfaGoSportTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            window.statusBarColor = colorScheme.background.toArgb()
+            window.navigationBarColor = colorScheme.background.toArgb()
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
         }
     }
 
@@ -70,4 +71,5 @@ fun UfaGoSportTheme(
         typography = Typography,
         content = content
     )
+
 }

@@ -63,9 +63,9 @@ fun AuthenticationScreen(navigateTo: NavigationFun) {
                 Color.White
             )
 
-            Spacer(Modifier.height(45.dp))
+            Spacer(Modifier.height(48.dp))
             LoginTextField()
-            Spacer(Modifier.height(19.dp))
+            Spacer(Modifier.height(18.dp))
             PasswordTextField()
             Spacer(Modifier.weight(1f))
             FilledTonalButton(

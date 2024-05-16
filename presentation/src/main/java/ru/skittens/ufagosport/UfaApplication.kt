@@ -11,6 +11,9 @@ import ru.skittens.data.source.AuthService
 import ru.skittens.data.source.PlaygroundService
 import ru.skittens.data.util.Postman
 import ru.skittens.ufagosport.ui.screens.main.map.MapViewModel
+import ru.skittens.ufagosport.ui.screens.main.news.NewsScreen
+import ru.skittens.ufagosport.ui.screens.main.news.NewsViewModel
+import ru.skittens.ufagosport.ui.screens.main.profile.ProfileViewModel
 
 class UfaApplication : Application() {
     private val listModules = listOf(
@@ -19,6 +22,8 @@ class UfaApplication : Application() {
             single { PlaygroundService(get()) }
             single { AuthService(get()) }
             single { MapViewModel() }
+            single { NewsViewModel() }
+            single { ProfileViewModel() }
         }
     )
 

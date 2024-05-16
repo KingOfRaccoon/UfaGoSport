@@ -22,8 +22,7 @@ typealias NavigationFun = (Destinations) -> Unit
 fun App() {
     UfaGoSportTheme {
         val navController = rememberNavController()
-        NavHost(navController, Destinations.Authentication.name, Modifier.fillMaxSize()) {
-
+        NavHost(navController, Destinations.Main.name, Modifier.fillMaxSize()) {
             composable(Destinations.Authentication) {
                 AuthenticationScreen(navController::navigate)
             }
