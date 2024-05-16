@@ -65,11 +65,9 @@ fun MainScreen() {
 
             composable(Destinations.NewsFriends) {
                 NewsScreen()
-//                DisplayLargeText("Булат 2")
             }
 
             composable(Destinations.Profile) {
-//                HeadlineLargeText("Булат 3")
                 ProfileScreen()
             }
         }

@@ -33,7 +33,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
 import androidx.compose.material.icons.filled.Accessibility
+import androidx.compose.material.icons.filled.BubbleChart
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FiberSmartRecord
 import androidx.compose.material.icons.filled.FlashOn
 import androidx.compose.material.icons.filled.LocationCity
 import androidx.compose.material.icons.filled.LocationOn
@@ -239,7 +241,7 @@ fun PlaygroundDialog(sheetState: SheetState, playground: Playground, onDismess: 
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Icon(
-                                    Icons.Default.TripOrigin,
+                                    Icons.Default.BubbleChart,
                                     null,
                                     Modifier.size(20.dp),
                                     Color.White.copy(.5f)
