@@ -25,6 +25,8 @@ import androidx.compose.material3.TextFieldDefaults.textFieldColors
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -38,14 +40,23 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import org.koin.compose.koinInject
 import ru.skittens.ufagosport.R
 import ru.skittens.ufagosport.ui.elements.BodyLargeText
 import ru.skittens.ufagosport.ui.elements.TitleLargeText
+import ru.skittens.ufagosport.ui.navigation.Destinations
 import ru.skittens.ufagosport.ui.navigation.NavigationFun
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AuthenticationScreen(navigateTo: NavigationFun) {
+fun AuthenticationScreen(
+    navigateTo: NavigationFun,
+    authenticationViewModel: AuthenticationViewModel = koinInject()
+) {
+    val loginState by authenticationViewModel.loginFlow.collectAsState()
+    val passwordState by authenticationViewModel.passwordFlow.collectAsState()
+    val navigateToMain by authenticationViewModel.navigateToMain.collectAsState()
+
     Scaffold(
         Modifier.fillMaxSize(),
         topBar = { TopAppBar({}, colors = TopAppBarDefaults.topAppBarColors(Color.Black)) }) {
@@ -63,12 +74,12 @@ fun AuthenticationScreen(navigateTo: NavigationFun) {
             )
 
             Spacer(Modifier.height(48.dp))
-            LoginTextField()
+            LoginTextField(loginState, authenticationViewModel::updateLogin)
             Spacer(Modifier.height(18.dp))
-            PasswordTextField()
+            PasswordTextField(passwordState, authenticationViewModel::updatePassword)
             Spacer(Modifier.weight(1f))
             FilledTonalButton(
-                {},
+                authenticationViewModel::loginUser,
                 Modifier.fillMaxWidth(.9f),
                 shape = RoundedCornerShape(12.dp),
                 colors = ButtonDefaults.filledTonalButtonColors(Color(0xFF74FF79))
@@ -80,12 +91,22 @@ fun AuthenticationScreen(navigateTo: NavigationFun) {
             Spacer(Modifier.height(20.dp))
         }
     }
+
+    LaunchedEffect(navigateToMain){
+        if (navigateToMain == null) return@LaunchedEffect
+
+        if (navigateToMain == true)
+            navigateTo(Destinations.Main)
+        else
+            navigateTo(Destinations.Registration)
+
+        authenticationViewModel.clearNavigate()
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PasswordTextField() {
-    var password by rememberSaveable { mutableStateOf("") }
+fun PasswordTextField(password: String, updatePassword: (String) -> Unit) {
     var passwordHidden by rememberSaveable { mutableStateOf(true) }
     TextField(
         modifier = Modifier.fillMaxWidth(.9f),
@@ -97,7 +118,7 @@ fun PasswordTextField() {
         ),
         shape = RoundedCornerShape(12.dp),
         value = password,
-        onValueChange = { password = it },
+        onValueChange = updatePassword,
         singleLine = true,
         placeholder = { Text("Пароль") },
         visualTransformation =
@@ -117,8 +138,7 @@ fun PasswordTextField() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginTextField() {
-    var password by rememberSaveable { mutableStateOf("") }
+fun LoginTextField(login: String, updateLogin: (String) -> Unit) {
     TextField(
         modifier = Modifier.fillMaxWidth(.9f),
         colors = textFieldColors(
@@ -128,8 +148,8 @@ fun LoginTextField() {
             errorIndicatorColor = Color.Transparent
         ),
         shape = RoundedCornerShape(12.dp),
-        value = password,
-        onValueChange = { password = it },
+        value = login,
+        onValueChange = updateLogin,
         singleLine = true,
         placeholder = { Text("Логин") },
         visualTransformation = VisualTransformation.None,

@@ -1,5 +1,8 @@
 package ru.skittens.domain.entity
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class RegistrationResponse(
     val mail: String,
     val password: String,
