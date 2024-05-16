@@ -1,4 +1,4 @@
-package ru.skittens.ufagosport.ui.screens.main.friends
+package ru.skittens.ufagosport.ui.screens.main.rating
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -33,7 +33,7 @@ import ru.skittens.ufagosport.ui.elements.BodyLargeText
 import ru.skittens.ufagosport.ui.elements.TitleLargeText
 
 @Composable
-fun FriendsScreen(friendsViewModel: FriendsViewModel = koinInject()) {
+fun RatingScreen(ratingViewModel: RatingViewModel = koinInject()) {
     val scrollState = rememberScrollState()
     Column(
         Modifier

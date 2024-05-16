@@ -80,7 +80,7 @@ fun ProfileScreen(profileViewModel: ProfileViewModel = koinInject()) {
             Modifier
                 .padding(top = 8.dp)
                 .clickable {
-
+                    //TODO nav to RatingScreen()
                 }) {
             TitleMediumText(
                 "Звание:",
@@ -108,7 +108,7 @@ fun ProfileScreen(profileViewModel: ProfileViewModel = koinInject()) {
                 .fillMaxWidth()
                 .padding(12.dp, 8.dp)
                 .clickable {
-
+                    //TODO nav to FriendsScreen()
                 },
             verticalAlignment = Alignment.CenterVertically) {
             Box {
@@ -133,7 +133,7 @@ fun ProfileScreen(profileViewModel: ProfileViewModel = koinInject()) {
                 .fillMaxWidth()
                 .padding(12.dp, 8.dp)
                 .clickable {
-
+                    //TODO nav to AchievementScreen()
                 },
             verticalAlignment = Alignment.CenterVertically) {
             Box {
