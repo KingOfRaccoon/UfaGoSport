@@ -207,7 +207,7 @@ fun PlaygroundDialog(sheetState: SheetState, playground: Playground, onDismess: 
                 IconButton(
                     {},
                     Modifier.align(Alignment.TopStart).padding(16.dp),
-                    colors = IconButtonDefaults.iconButtonColors(Color.White.copy(.30f))
+                    colors = IconButtonDefaults.iconButtonColors(Color.White.copy(.40f))
                 ) {
                     Icon(Icons.AutoMirrored.Filled.ArrowBack, null, tint = Color.White)
                 }
@@ -215,7 +215,7 @@ fun PlaygroundDialog(sheetState: SheetState, playground: Playground, onDismess: 
                 IconButton(
                     {},
                     Modifier.align(Alignment.TopEnd).padding(16.dp),
-                    colors = IconButtonDefaults.iconButtonColors(Color.White.copy(.30f))
+                    colors = IconButtonDefaults.iconButtonColors(Color.White.copy(.40f))
                 ) {
                     Icon(Icons.Filled.Favorite, null, tint = Color.White)
                 }
