@@ -39,7 +39,7 @@ import ru.skittens.ufagosport.ui.elements.TitleMediumText
 import ru.skittens.ufagosport.ui.navigation.NavigationFun
 
 @Composable
-fun ProfileScreen(profileViewModel: ProfileViewModel = koinInject(), navigateTo: NavigationFun) {
+fun ProfileScreen(profileViewModel: ProfileViewModel = koinInject()) {
     val scrollState = rememberScrollState()
     Column(
         Modifier
