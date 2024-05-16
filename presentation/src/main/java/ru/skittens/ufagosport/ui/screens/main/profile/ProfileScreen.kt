@@ -36,6 +36,7 @@ import org.koin.compose.koinInject
 import ru.skittens.ufagosport.R
 import ru.skittens.ufagosport.ui.elements.TitleLargeText
 import ru.skittens.ufagosport.ui.elements.TitleMediumText
+import ru.skittens.ufagosport.ui.elements.TitleSmallText
 import ru.skittens.ufagosport.ui.navigation.NavigationFun
 
 @Composable
@@ -51,14 +52,17 @@ fun ProfileScreen(profileViewModel: ProfileViewModel = koinInject()) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-//        Box( Modifier.zIndex(1f)) {
-//            Image(
-//                painterResource(R.drawable.ellipse),
-//                null,
-//                Modifier.fillMaxSize(1.0f).padding(top = 24.dp)
-//            )
-//        }
-
+        Row (Modifier.
+            background(Color(0xFF74FF79),
+                shape = RoundedCornerShape(size = 50.dp))
+                .padding(6.dp, 8.dp, 16.dp, 8.dp),
+                verticalAlignment = Alignment.CenterVertically){
+            Image(painterResource(R.drawable.crown), null,
+                Modifier
+                    .fillMaxSize(.1f)
+                    .padding(top = 2.dp))
+            TitleSmallText(text = "280xp", color = Color.Black)
+        }
         Spacer(modifier = Modifier.weight(1.0f))
         Image(painterResource(R.drawable.person), null,
             Modifier
@@ -72,11 +76,12 @@ fun ProfileScreen(profileViewModel: ProfileViewModel = koinInject()) {
             Color.White,
 
         )
-        Row(Modifier
-            .padding(top = 8.dp)
-            .clickable{
+        Row(
+            Modifier
+                .padding(top = 8.dp)
+                .clickable {
 
-            }) {
+                }) {
             TitleMediumText(
                 "Звание:",
                 Modifier.fillMaxWidth(.2f),
@@ -127,7 +132,7 @@ fun ProfileScreen(profileViewModel: ProfileViewModel = koinInject()) {
                 .fillMaxSize()
                 .fillMaxWidth()
                 .padding(12.dp, 8.dp)
-                .clickable{
+                .clickable {
 
                 },
             verticalAlignment = Alignment.CenterVertically) {
@@ -152,7 +157,7 @@ fun ProfileScreen(profileViewModel: ProfileViewModel = koinInject()) {
                 .fillMaxSize()
                 .fillMaxWidth()
                 .padding(12.dp, 8.dp)
-                .clickable{
+                .clickable {
 
                 },
             verticalAlignment = Alignment.CenterVertically) {
