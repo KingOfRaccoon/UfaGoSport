@@ -10,6 +10,7 @@ import org.koin.dsl.module
 import ru.skittens.data.source.AuthService
 import ru.skittens.data.source.PlaygroundService
 import ru.skittens.data.util.Postman
+import ru.skittens.ufagosport.ui.screens.main.friends.FriendsViewModel
 import ru.skittens.ufagosport.ui.screens.main.map.MapViewModel
 import ru.skittens.ufagosport.ui.screens.main.news.NewsScreen
 import ru.skittens.ufagosport.ui.screens.main.news.NewsViewModel
@@ -24,6 +25,7 @@ class UfaApplication : Application() {
             single { MapViewModel() }
             single { NewsViewModel() }
             single { ProfileViewModel() }
+            single { FriendsViewModel() }
         }
     )
 
