@@ -9,5 +9,8 @@ enum class Destinations(val title: String = "") {
     Map("Карта"),
     NewsFriends("Лента новостей"),
     Profile("Профиль"),
-    ListFriends("Список друзей")
+    ListFriends("Список друзей"),
+    Rating,
+    Achievement,
+    Event
 }

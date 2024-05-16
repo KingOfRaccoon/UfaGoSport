@@ -23,6 +23,7 @@ import ru.skittens.ufagosport.ui.screens.start.auth.AuthenticationViewModel
 import ru.skittens.ufagosport.ui.screens.main.news.NewsScreen
 import ru.skittens.ufagosport.ui.screens.main.news.NewsViewModel
 import ru.skittens.ufagosport.ui.screens.main.profile.ProfileViewModel
+import ru.skittens.ufagosport.ui.screens.main.rating.RatingViewModel
 
 class UfaApplication : Application() {
     private val listModules = listOf(
@@ -48,8 +49,9 @@ class UfaApplication : Application() {
             }
             single { MapViewModel(get()) }
             single { NewsViewModel() }
-            single { ProfileViewModel() }
+            single { ProfileViewModel(get()) }
             single { FriendsViewModel() }
+            single { RatingViewModel() }
         }
     )
 

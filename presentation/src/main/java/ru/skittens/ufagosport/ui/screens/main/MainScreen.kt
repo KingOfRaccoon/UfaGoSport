@@ -39,9 +39,13 @@ import ru.skittens.ufagosport.ui.navigation.Destinations
 import ru.skittens.ufagosport.ui.navigation.NavigationFun
 import ru.skittens.ufagosport.ui.navigation.composable
 import ru.skittens.ufagosport.ui.navigation.navigate
+import ru.skittens.ufagosport.ui.screens.main.achievement.AchievementScreen
+import ru.skittens.ufagosport.ui.screens.main.event.EventScreen
+import ru.skittens.ufagosport.ui.screens.main.friends.FriendsScreen
 import ru.skittens.ufagosport.ui.screens.main.map.MapScreen
 import ru.skittens.ufagosport.ui.screens.main.news.NewsScreen
 import ru.skittens.ufagosport.ui.screens.main.profile.ProfileScreen
+import ru.skittens.ufagosport.ui.screens.main.rating.RatingScreen
 
 @Composable
 fun MainScreen() {
@@ -60,7 +64,7 @@ fun MainScreen() {
                 .fillMaxSize()
                 .padding(it)) {
             composable(Destinations.Map) {
-                MapScreen()
+                MapScreen(navHostController::navigate)
             }
 
             composable(Destinations.NewsFriends) {
@@ -68,7 +72,23 @@ fun MainScreen() {
             }
 
             composable(Destinations.Profile) {
-                ProfileScreen()
+                ProfileScreen(navHostController::navigate)
+            }
+
+            composable(Destinations.ListFriends){
+                FriendsScreen()
+            }
+
+            composable(Destinations.Rating){
+                RatingScreen()
+            }
+
+            composable(Destinations.Achievement){
+                AchievementScreen()
+            }
+
+            composable(Destinations.Event){
+                EventScreen()
             }
         }
     }
