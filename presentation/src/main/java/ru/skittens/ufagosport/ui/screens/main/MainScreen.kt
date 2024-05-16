@@ -14,6 +14,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -94,21 +95,39 @@ fun MainBottomNavigationMenu(navigateTo: NavigationFun) {
             0 == currentIndex,
             { currentIndex = 0; navigateTo(Destinations.Map) },
             icon = { Icon(Icons.Default.Map, null) },
-            label = { Text(text = "Карта")}
+            label = { Text(text = "Карта")},
+            colors = NavigationBarItemDefaults.colors(
+                selectedIconColor = Color(0xFF74FF79),
+                unselectedIconColor = Color.Gray,
+                selectedTextColor = Color.White,
+                indicatorColor = Color(0xFF232323)
+            )
         )
 
         NavigationBarItem(
             1 == currentIndex,
             { currentIndex = 1; navigateTo(Destinations.NewsFriends) },
             icon = { Icon(Icons.Default.MarkChatUnread, null) },
-            label = { Text(text = "Новости")}
+            label = { Text(text = "Новости")},
+            colors = NavigationBarItemDefaults.colors(
+                selectedIconColor = Color(0xFF74FF79),
+                unselectedIconColor = Color.Gray,
+                selectedTextColor = Color.White,
+                indicatorColor = Color(0xFF232323)
+            )
         )
 
         NavigationBarItem(
             2 == currentIndex,
             { currentIndex = 2; navigateTo(Destinations.Profile) },
             icon = { Icon(Icons.Default.Person, null) },
-            label = { Text(text = "Профиль")}
+            label = { Text(text = "Профиль")},
+            colors = NavigationBarItemDefaults.colors(
+                selectedIconColor = Color(0xFF74FF79),
+                unselectedIconColor = Color.Gray,
+                selectedTextColor = Color.White,
+                indicatorColor = Color(0xFF232323)
+            )
         )
     }
 
