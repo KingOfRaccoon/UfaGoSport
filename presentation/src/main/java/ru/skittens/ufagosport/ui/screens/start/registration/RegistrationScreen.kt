@@ -109,9 +109,10 @@ fun RegistrationScreen(
 
             LazyVerticalGrid(
                 GridCells.Fixed(5),
-                Modifier.fillMaxWidth().weight(1f),
+                Modifier.fillMaxWidth().weight(2f)
+                    .padding(horizontal = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
-                horizontalArrangement = Arrangement.spacedBy(22.dp)
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 items(Avatar.entries.toTypedArray(), { it.ordinal }) {
                     ItemAvatar(it.drawable, it == imageUser) {
@@ -119,7 +120,6 @@ fun RegistrationScreen(
                     }
                 }
             }
-            Spacer(Modifier.height(39.dp))
             NameTextField(name, authenticationViewModel::updateName)
             Spacer(Modifier.weight(1f))
             FilledTonalButton(
@@ -158,7 +158,7 @@ fun NameTextField(name: String, updateName: (String) -> Unit) {
         value = name,
         onValueChange = updateName,
         singleLine = true,
-        placeholder = { Text("Логин") },
+        placeholder = { Text("Никнейм") },
         visualTransformation = VisualTransformation.None,
     )
 }

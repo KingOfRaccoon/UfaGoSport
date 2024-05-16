@@ -151,7 +151,7 @@ fun LoginTextField(login: String, updateLogin: (String) -> Unit) {
         value = login,
         onValueChange = updateLogin,
         singleLine = true,
-        placeholder = { Text("Логин") },
+        placeholder = { Text("Никнейм") },
         visualTransformation = VisualTransformation.None,
     )
 }
