@@ -34,7 +34,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
 import androidx.compose.material.icons.filled.Accessibility
+import androidx.compose.material.icons.filled.BubbleChart
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FiberSmartRecord
 import androidx.compose.material.icons.filled.FlashOn
 import androidx.compose.material.icons.filled.LocationCity
 import androidx.compose.material.icons.filled.LocationOn
@@ -231,7 +233,7 @@ fun PlaygroundDialog(
                 IconButton(
                     onDismiss,
                     Modifier.align(Alignment.TopStart).padding(16.dp),
-                    colors = IconButtonDefaults.iconButtonColors(Color.White.copy(.30f))
+                    colors = IconButtonDefaults.iconButtonColors(Color.White.copy(.40f))
                 ) {
                     Icon(Icons.AutoMirrored.Filled.ArrowBack, null, tint = Color.White)
                 }
@@ -239,7 +241,7 @@ fun PlaygroundDialog(
                 IconButton(
                     {},
                     Modifier.align(Alignment.TopEnd).padding(16.dp),
-                    colors = IconButtonDefaults.iconButtonColors(Color.White.copy(.30f))
+                    colors = IconButtonDefaults.iconButtonColors(Color.White.copy(.40f))
                 ) {
                     Icon(Icons.Filled.Favorite, null, tint = Color.White)
                 }
@@ -265,7 +267,7 @@ fun PlaygroundDialog(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Icon(
-                                    Icons.Default.TripOrigin,
+                                    Icons.Default.BubbleChart,
                                     null,
                                     Modifier.size(20.dp),
                                     Color.White.copy(.5f)
