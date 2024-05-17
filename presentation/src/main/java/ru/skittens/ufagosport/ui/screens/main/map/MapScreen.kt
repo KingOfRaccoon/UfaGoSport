@@ -2,6 +2,7 @@ package ru.skittens.ufagosport.ui.screens.main.map
 
 import android.content.Intent
 import android.net.Uri
+import android.widget.Toast
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
@@ -108,8 +109,19 @@ fun MapScreen(navigateTo: NavigationFun, mapViewModel: MapViewModel = koinInject
     val playgroundState by mapViewModel.selectedPlaygroundFlow.collectAsState()
     val playgrounds by mapViewModel.getPlaygrounds().collectAsState(Resource.Loading())
     val sheetState = rememberModalBottomSheetState()
+    val addState by mapViewModel.addState.collectAsState()
     val items = remember {
         listOf("Площадки", "Мероприятия")
+    }
+
+    LaunchedEffect(addState) {
+        if (addState is Resource.Success)
+            Toast.makeText(context, "Событие добавлено", Toast.LENGTH_SHORT).show()
+        else if (addState is Resource.Error)
+            Toast.makeText(context, "Что-то пошло не так", Toast.LENGTH_SHORT).show()
+
+        if (addState !is Resource.Loading)
+            mapViewModel.addState.value = Resource.Loading()
     }
 
     val placemarkTapListener = MapObjectTapListener { mapObject, point ->
@@ -169,7 +181,13 @@ fun MapScreen(navigateTo: NavigationFun, mapViewModel: MapViewModel = koinInject
     }
 
     if (playgroundState != null)
-        PlaygroundDialog(sheetState, playgroundState!!, mapViewModel::clearPlayground, navigateTo)
+        PlaygroundDialog(
+            sheetState,
+            playgroundState!!,
+            mapViewModel::clearPlayground,
+            navigateTo,
+            mapViewModel::addDuel
+        )
 
     AndroidView(modifier = Modifier.fillMaxSize(), factory = { mapView })
     Box(Modifier.fillMaxWidth()) {
@@ -187,7 +205,8 @@ fun PlaygroundDialog(
     sheetState: SheetState,
     playground: Playground,
     onDismiss: () -> Unit,
-    navigateTo: NavigationFun
+    navigateTo: NavigationFun,
+    addDuel: () -> Unit
 ) {
     val context = LocalContext.current
     val carouselPager = rememberPagerState { playground.photos.size }
@@ -501,7 +520,7 @@ fun PlaygroundDialog(
                     Spacer(Modifier.height(12.dp))
 
                     FilledTonalButton(
-                        {},
+                        addDuel,
                         Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(12.dp),
                         colors = ButtonDefaults.filledTonalButtonColors(Color(0xFF74FF79))

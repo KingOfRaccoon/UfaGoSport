@@ -47,10 +47,10 @@ class UfaApplication : Application() {
                         .putString("avatar", it).apply()
                 }
             }
-            single { MapViewModel(get()) }
+            single { MapViewModel(get(), get()) }
             single { NewsViewModel() }
             single { ProfileViewModel(get()) }
-            single { FriendsViewModel() }
+            single { FriendsViewModel(get()) }
             single { RatingViewModel() }
         }
     )

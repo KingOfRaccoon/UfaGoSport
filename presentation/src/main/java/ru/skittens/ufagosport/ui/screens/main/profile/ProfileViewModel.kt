@@ -9,7 +9,7 @@ import ru.skittens.domain.usecase.UserUseCase
 import ru.skittens.ufagosport.ui.screens.start.registration.Avatar
 
 class ProfileViewModel(private val userUseCase: UserUseCase): ViewModel() {
-    fun getUser() = userUseCase.user
+    fun getUser() = userUseCase.getUserWithRating()
 
     fun getAvatar(user: User?) = Avatar.entries.toList().fastFirstOrNull { it.name == user?.photo } ?: Avatar.First
 }

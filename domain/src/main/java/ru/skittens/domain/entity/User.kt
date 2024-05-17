@@ -8,5 +8,6 @@ data class User(
     val id: Int,
     val photo: String,
     val role: Int,
-    val username: String
+    val username: String,
+    var rating: Rating = Rating("0")
 )

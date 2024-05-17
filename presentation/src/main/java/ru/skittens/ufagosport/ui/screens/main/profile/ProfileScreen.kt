@@ -35,6 +35,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import org.koin.compose.koinInject
+import ru.skittens.domain.util.Resource
 import ru.skittens.ufagosport.R
 import ru.skittens.ufagosport.ui.elements.TitleLargeText
 import ru.skittens.ufagosport.ui.elements.TitleMediumText
@@ -44,7 +45,7 @@ import ru.skittens.ufagosport.ui.navigation.NavigationFun
 
 @Composable
 fun ProfileScreen(navigateTo: NavigationFun, profileViewModel: ProfileViewModel = koinInject()) {
-    val user by profileViewModel.getUser().collectAsState()
+    val user by profileViewModel.getUser().collectAsState(Resource.Loading())
     val scrollState = rememberScrollState()
     Column(
         Modifier.background(Color.Black).fillMaxSize().verticalScroll(scrollState)
@@ -69,7 +70,7 @@ fun ProfileScreen(navigateTo: NavigationFun, profileViewModel: ProfileViewModel 
                     null,
                     Modifier
                 )
-                TitleSmallText(text = "280xp", color = Color.Black)
+                TitleSmallText(text = "${user.data?.rating?.elo}xp", color = Color.Black)
             }
         }
         Spacer(Modifier.height(18.dp))
@@ -87,7 +88,7 @@ fun ProfileScreen(navigateTo: NavigationFun, profileViewModel: ProfileViewModel 
                 "Звание:", Modifier.fillMaxWidth(.2f), TextAlign.Center, Color.White
             )
             TitleMediumText(
-                "Мышь", Modifier.fillMaxWidth(.2f), TextAlign.Center, Color(0xFF74FF79)
+                getRank(user.data?.rating?.elo?.toIntOrNull() ?: 0), Modifier.fillMaxWidth(.2f), TextAlign.Center, Color(0xFF74FF79)
             )
             Image(
                 painterResource(R.drawable.chevron_right),
