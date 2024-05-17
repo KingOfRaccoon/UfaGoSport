@@ -42,10 +42,10 @@ class MapViewModel(
                             "Новое мероприятие от пользователя ${userUseCase.user.value.data?.email}",
                             "false",
                             "Новое мероприятие от пользователя ${userUseCase.user.value.data?.email}",
-                            "",
+                            "1",
                             "5",
                             playground.id.toString(),
-                            ""
+                            "1"
                         )
                     )
                 }
